@@ -1,0 +1,96 @@
+/** Shuning Niu **/
+
+import java.util.Scanner;
+
+public class tictactoe {
+	public static void main(String[] args) {
+		char[][] gameBoard = new char[3][3];
+		clearBoard(gameBoard);
+		char turn = 'X';
+		String win = "win";
+		int count = 0;
+		while (win == "win") {
+			// input of the user
+			printBoard(gameBoard);
+			System.out.printf("%c" + "'s turn (row column): ", turn);
+			Scanner input = new Scanner(System.in);
+			int r = input.nextInt();
+			int c = input.nextInt();
+
+			// We attempted to make two methods to check for a cat's game:
+			// boolean boardFull;
+
+			// for (int row = 0; row < 3; row++) {
+			// for (int col = 0; col < 3; col++) {
+			// if (gameBoard[r][c] == ' ') {
+			// boardFull = false;
+			// }
+			// }
+			// }
+			// boardFull = true;
+
+			gameBoard[r][c] = turn; // random turn
+			if (gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2] && gameBoard[2][2] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[2][0] == gameBoard[1][1] && gameBoard[2][0] == gameBoard[0][2]
+					&& gameBoard[0][2] == turn) {
+				win = Character.toString(turn);
+				System.out.println(
+
+						"Winner: " + win);
+			} else if (gameBoard[0][0] == gameBoard[0][1] && gameBoard[0][0] == gameBoard[0][2]
+					&& gameBoard[0][2] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[1][1] == gameBoard[1][0] && gameBoard[1][1] == gameBoard[1][2]
+					&& gameBoard[1][2] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[2][0] == gameBoard[2][1] && gameBoard[2][0] == gameBoard[2][2]
+					&& gameBoard[2][1] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[0][0] == gameBoard[1][0] && gameBoard[0][0] == gameBoard[2][0]
+					&& gameBoard[2][0] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[0][0] == gameBoard[0][1] && gameBoard[0][0] == gameBoard[0][2]
+					&& gameBoard[0][1] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[0][1] == gameBoard[1][1] && gameBoard[0][1] == gameBoard[2][1]
+					&& gameBoard[1][1] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			} else if (gameBoard[0][2] == gameBoard[1][2] && gameBoard[0][2] == gameBoard[2][2]
+					&& gameBoard[2][2] == turn) {
+				win = Character.toString(turn);
+				System.out.println("Winner: " + win);
+			}
+
+			turn = turn == 'X' ? 'O' : 'X'; // alternate between X and O
+
+		}
+	}
+
+	/** Clears the board with space characters. */
+	static void clearBoard(char[][] board) {
+		for (int row = 0; row < 3; row++)
+			for (int col = 0; col < 3; col++)
+				board[row][col] = ' ';
+	}
+
+	/** Prints the board in a simple format */
+	static void printBoard(char[][] board) {
+		System.out.println("    0  1  2");
+		for (int row = 0; row < 3; row++) {
+			System.out.printf(" %d ", row);
+			for (int col = 0; col < 3; col++) {
+				System.out.printf(" %c ", board[row][col]);
+			}
+			System.out.println();
+
+		}
+	}
+}
